@@ -65,17 +65,16 @@ largest_found = 0
 largest_a = 0
 largest_b = 0
 
-for i in range(999, 0, -1):
+for a in range(999, 900, -1):
     b = 999
     found = False
     while found == False:
-        found = palindrome(i, b)
+        found = palindrome(a, b)
         b -= 1
 
-    if largest_found < (i * (b + 1)):
-        largest_a = i
+    if largest_found < (a * (b + 1)):
+        largest_a = a
         largest_b = b + 1
         largest_found = largest_a * largest_b
-
 
 print('Question 4 =', largest_found, '(', largest_a, largest_b, ')')
