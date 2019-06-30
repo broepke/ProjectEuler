@@ -52,8 +52,7 @@ print('Question 3 =', int(n))
 # Find the largest palindrome made from the product of two 3-digit numbers.
 
 
-
-def palindrome(a,b):
+def palindrome(a, b):
     '''check to see if two numbers are palindromic'''
     c = a * b
     d = str(c)
@@ -61,22 +60,22 @@ def palindrome(a,b):
 
     return c == int(d)
 
-a = 999
-b = 999
-found = False
-largest_found = 0
 
-for i in range(a,0,-1):
-    print(i)
+largest_found = 0
+largest_a = 0
+largest_b = 0
+
+for i in range(999, 0, -1):
     b = 999
-    found == False
+    found = False
     while found == False:
-        found = palindrome(i,b)
-        print(i,b,largest_found,found)
+        found = palindrome(i, b)
         b -= 1
 
-    if largest_found < (i*(b+1)):
-        print('larger one found',i)
-        largest_found = (i*(b+1))
+    if largest_found < (i * (b + 1)):
+        largest_a = i
+        largest_b = b + 1
+        largest_found = largest_a * largest_b
 
-print(largest_found)
+
+print('Question 4 =', largest_found, '(', largest_a, largest_b, ')')
