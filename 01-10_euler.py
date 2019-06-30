@@ -1,6 +1,9 @@
 # solving the Euler Problems
 import numpy as np
-''' '''
+from math import sqrt
+
+#'''
+
 # Question 1
 # If we list all the natural numbers below 10 that are multiples of 3 or 5,
 # we get 3, 5, 6 and 9. The sum of these multiples is 23.
@@ -115,9 +118,9 @@ print('Question 5 =', start_num - step)  # 232792560
 # Find the difference between the sum of the squares of the
 # first one hundred natural numbers and the square of the sum.
 
-alist = np.arange(1,101,1)
+alist = np.arange(1, 101, 1)
 
-#sum of squares
+# sum of squares
 a = alist ** 2
 a = np.sum(a)
 
@@ -125,4 +128,26 @@ a = np.sum(a)
 b = np.sum(alist)
 b = b ** 2
 
-print('Question 6 =', b-a) # 25164150
+print('Question 6 =', b - a)  # 25164150
+
+
+# By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13,
+# we can see that the 6th prime is 13.
+# What is the 10 001st prime number?
+
+prime_list = [2]
+num = 3
+
+while len(prime_list) < 10001:
+    is_prime = True
+    for i in range(2, int(sqrt(num)) + 1):
+        if num % i == 0:
+            is_prime = False
+            break
+
+    if is_prime:
+        prime_list.append(num)
+
+    num += 1
+
+print('Question 7 =', prime_list[-1:])  # 104743
