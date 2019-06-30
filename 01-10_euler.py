@@ -46,3 +46,37 @@ while i * i < n:
     i = i + 1
 
 print('Question 3 =', int(n))
+
+# A palindromic number reads the same both ways. The largest palindrome
+# made from the product of two 2-digit numbers is 9009 = 91 × 99.
+# Find the largest palindrome made from the product of two 3-digit numbers.
+
+
+
+def palindrome(a,b):
+    '''check to see if two numbers are palindromic'''
+    c = a * b
+    d = str(c)
+    d = d[::-1]
+
+    return c == int(d)
+
+a = 999
+b = 999
+found = False
+largest_found = 0
+
+for i in range(a,0,-1):
+    print(i)
+    b = 999
+    found == False
+    while found == False:
+        found = palindrome(i,b)
+        print(i,b,largest_found,found)
+        b -= 1
+
+    if largest_found < (i*(b+1)):
+        print('larger one found',i)
+        largest_found = (i*(b+1))
+
+print(largest_found)
