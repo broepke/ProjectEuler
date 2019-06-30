@@ -1,0 +1,9 @@
+
+.DS_Store
+datasets/
+venv/
+.idea/
+.ipynb_checkpoints
+*.pkl
+.idea/vcs.xml
+.vscode/
