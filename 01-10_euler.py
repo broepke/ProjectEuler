@@ -6,7 +6,6 @@ import time
 start_time = time.time()
 
 
-
 # Question 1
 # If we list all the natural numbers below 10 that are multiples of 3 or 5,
 # we get 3, 5, 6 and 9. The sum of these multiples is 23.
@@ -201,8 +200,30 @@ for num in a:
             if num + dig + i == 1000:
                 if pythag(num, dig, i):
                     print(num, dig, i)
-                    print("Question 9 =: {}".format(num * dig * i))
+                    print("Question 9 = {}".format(num * dig * i))
                     exit(1)
 
+
+# The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+# Find the sum of all the primes below two million.
+
+prime_list = [2]
+num = 3
+
+while num < 2000000:
+    is_prime = True
+    for i in range(2, int(sqrt(num)) + 1):
+        if num % i == 0:
+            is_prime = False
+            break
+
+    if is_prime:
+        prime_list.append(num)
+
+    num += 1
+
+total = sum(prime_list)
+
+print('Question 10 =', total)  # 142913828922
 
 print("Program took %s seconds to run." % (time.time() - start_time))
