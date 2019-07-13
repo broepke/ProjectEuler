@@ -188,6 +188,22 @@ print('Question 8 =', largest)  # 23514624000
 # There exists exactly one Pythagorean triplet for which a + b + c = 1000.
 # Find the product abc.
 
-print("Program took %s seconds to run." % (time.time() - start_time))
 
-print(sqrt())
+def pythag(a, b, c):
+    if a ** 2 + b ** 2 == c ** 2:
+        return True
+    return False
+
+a = [x for x in range(1, 1000)]
+
+for num in a:
+    for dig in range(num, 1000 - num):
+        for i in range(dig, 1000 - dig):
+            if num + dig + i == 1000:
+                if pythag(num, dig, i):
+                    print(num, dig, i)
+                    print("Question 9 = Product: {}".format(num * dig * i))
+                    exit(1)
+
+
+print("Program took %s seconds to run." % (time.time() - start_time))
