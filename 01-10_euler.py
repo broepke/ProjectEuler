@@ -5,7 +5,7 @@ import time
 
 start_time = time.time()
 
-'''
+
 
 # Question 1
 # If we list all the natural numbers below 10 that are multiples of 3 or 5,
@@ -56,7 +56,7 @@ print('Question 3 =', int(n))  # 6857
 
 
 # A palindromic number reads the same both ways. The largest palindrome
-# made from the product of two 2-digit numbers is 9009 = 91 × 99.
+# made from the product of two 2-digit numbers is 9009 = 91 x 99.
 # Find the largest palindrome made from the product of two 3-digit numbers.
 
 
@@ -117,7 +117,7 @@ print('Question 5 =', start_num - step)  # 232792560
 # The square of the sum of the first ten natural numbers is,
 # (1 + 2 + ... + 10)^2 = 552 = 3025
 # Hence the difference between the sum of the squares of the first
-# ten natural numbers and the square of the sum is 3025 − 385 = 2640.
+# ten natural numbers and the square of the sum is 3025 - 385 = 2640.
 # Find the difference between the sum of the squares of the
 # first one hundred natural numbers and the square of the sum.
 
@@ -156,7 +156,7 @@ print('Question 7 =', prime_list[-1:])  # 104743
 
 
 # The four adjacent digits in the 1000-digit number that have the
-# greatest product are 9 × 9 × 8 × 9 = 5832.
+# greatest product are 9 x 9 x 8 x 9 = 5832.
 # Find the thirteen adjacent digits in the 1000-digit number that
 # have the greatest product. What is the value of this product?
 
@@ -178,7 +178,6 @@ for i in range(len(digits) + 1):
 
 print('Question 8 =', largest)  # 23514624000
 
-'''
 
 # A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
 #
@@ -202,7 +201,7 @@ for num in a:
             if num + dig + i == 1000:
                 if pythag(num, dig, i):
                     print(num, dig, i)
-                    print("Question 9 = Product: {}".format(num * dig * i))
+                    print("Question 9 =: {}".format(num * dig * i))
                     exit(1)
 
 
