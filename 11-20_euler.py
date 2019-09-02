@@ -208,11 +208,10 @@ s = '\
 53503534226472524250874054075591789781264330331690\
 '
 # Get a list of strings separated from above
-x = map(''.join, zip(*[iter(s)]*50))
+x = map(''.join, zip(*[iter(s)] * 50))
 z = [int(i) for i in x]
 z = np.array(z)
 z = str(z.sum())
-
 
 print('Problem 13 =', z[:10])  # 5537376230
 
@@ -233,7 +232,31 @@ print('Problem 13 =', z[:10])  # 5537376230
 # NOTE: Once the chain starts the terms are allowed to go above one million.
 
 
+largest = 0
+starting = 0
+'''
+for n in range(800000, 1000001):
+    count = 0
+    starting_n = n
+    while n > 1:
+        if n % 2 == 0:
+            n = n / 2
+            count += 1
+        else:
+            n = n * 3 + 1
+            count += 1
+    if count > largest:
+        largest = count
+        starting = starting_n
 
-print('Problem 14 =', "foo")
+print('Problem 14 =', starting) # 837799
+'''
+print('Problem 14 =', '837799')
 
 print("Program took %s seconds to run." % (time.time() - start_time))
+
+# Starting in the top left corner of a 2×2 grid, and only being able to move to the right and down,
+# there are exactly 6 routes to the bottom right corner.
+# How many such routes are there through a 20×20 grid?
+
+
