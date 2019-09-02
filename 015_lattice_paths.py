@@ -1,5 +1,3 @@
-# solving the Euler Problems
-import numpy as np
 import time
 from math import factorial
 
