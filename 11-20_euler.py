@@ -1,7 +1,7 @@
 # solving the Euler Problems
 import numpy as np
-from math import sqrt
 import time
+from math import factorial
 
 start_time = time.time()
 
@@ -253,10 +253,22 @@ print('Problem 14 =', starting) # 837799
 '''
 print('Problem 14 =', '837799')
 
-print("Program took %s seconds to run." % (time.time() - start_time))
-
 # Starting in the top left corner of a 2×2 grid, and only being able to move to the right and down,
 # there are exactly 6 routes to the bottom right corner.
 # How many such routes are there through a 20×20 grid?
+
+# This can be solved with a calculator using binomial theorem.  a.k.a = N choose K.
+# Simple combinatorics.  rows + columns = n, rows or columns = k
+
+n = 40
+k = 20
+
+lattice = int(factorial(n)/(factorial(k) ** 2))
+
+print('Problem 14 =', lattice)
+
+
+print("Program took %s seconds to run." % (time.time() - start_time))
+
 
 
