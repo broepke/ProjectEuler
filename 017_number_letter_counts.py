@@ -17,6 +17,7 @@ print("Program took %s seconds to run." % (time.time() - start_time))
 
 num_len_dict = {}
 
+# Number counts for single digits
 num_len_dict['zero'] = 4
 num_len_dict['one'] = 3
 num_len_dict['two'] = 3
@@ -29,16 +30,31 @@ num_len_dict['eight'] = 5
 num_len_dict['nine'] = 4
 num_len_dict['ten'] = 3
 
+# Number counts for teens
 num_len_dict['eleven'] = 6
-num_len_dict['twelve'] = 3
-num_len_dict['thirteen'] = 3
-num_len_dict['fourteen'] = 3
-num_len_dict['fifteen'] = 3
-num_len_dict['sixteen'] = 3
-num_len_dict['seventeen'] = 3
-num_len_dict['eighteen'] = 3
-num_len_dict['nineteen'] = 3
-num_len_dict['twenty'] = 3
+num_len_dict['twelve'] = 6
+num_len_dict['thirteen'] = 8
+num_len_dict['fourteen'] = 8
+num_len_dict['fifteen'] = 8
+num_len_dict['sixteen'] = 7
+num_len_dict['seventeen'] = 9
+num_len_dict['eighteen'] = 8
+num_len_dict['nineteen'] = 8
+
+# Number counts for the tens
+num_len_dict['twenty'] = 6
+num_len_dict['thirty'] = 6
+num_len_dict['fourty'] = 6
+num_len_dict['fifty'] = 5
+num_len_dict['sixty'] = 5
+num_len_dict['seventy'] = 7
+num_len_dict['eighty'] = 6
+num_len_dict['ninety'] = 6
+
+# Number counts for the hudredes
+num_len_dict['one hundred'] = 10
+
+# Finally - the thousands
 
 
 print(num_len_dict)
