@@ -18,7 +18,7 @@ a = str(a)  # Covert to a String
 for i in a:
     t += int(i)
 
-print(t)  # 1366
+print('Problem 16 =', t)  # 1366
 
 print("Program took %s seconds to run." % (time.time() - start_time))
 

@@ -13,48 +13,102 @@ start_time = time.time()
 # contains 23 letters and 115 (one hundred and fifteen) contains 20 letters.
 # The use of "and" when writing out numbers is in compliance with British usage.
 
-print("Program took %s seconds to run." % (time.time() - start_time))
 
+
+# the approch i'm taking is to use a big dictionary that will hold all the
+# lengths of the words by key's of thir numbers for easy lookup of string length
+# then iterate through all the use cases of how words are built from 1-1000
+# 1-19 are unique words
+# round "tens" and "hundreds" are also unique words
+# and per the instructions above, you build them with the example syntax
 num_len_dict = {}
 
 # Number counts for single digits
-num_len_dict['zero'] = 4
-num_len_dict['one'] = 3
-num_len_dict['two'] = 3
-num_len_dict['three'] = 4
-num_len_dict['four'] = 4
-num_len_dict['five'] = 4
-num_len_dict['six'] = 3
-num_len_dict['seven'] = 5
-num_len_dict['eight'] = 5
-num_len_dict['nine'] = 4
-num_len_dict['ten'] = 3
+num_len_dict[1] = 3
+num_len_dict[2] = 3
+num_len_dict[3] = 5
+num_len_dict[4] = 4
+num_len_dict[5] = 4
+num_len_dict[6] = 3
+num_len_dict[7] = 5
+num_len_dict[8] = 5
+num_len_dict[9] = 4
 
 # Number counts for teens
-num_len_dict['eleven'] = 6
-num_len_dict['twelve'] = 6
-num_len_dict['thirteen'] = 8
-num_len_dict['fourteen'] = 8
-num_len_dict['fifteen'] = 8
-num_len_dict['sixteen'] = 7
-num_len_dict['seventeen'] = 9
-num_len_dict['eighteen'] = 8
-num_len_dict['nineteen'] = 8
+num_len_dict[10] = 3
+num_len_dict[11] = 6
+num_len_dict[12] = 6
+num_len_dict[13] = 8
+num_len_dict[14] = 8
+num_len_dict[15] = 7
+num_len_dict[16] = 7
+num_len_dict[17] = 9
+num_len_dict[18] = 8
+num_len_dict[19] = 8
 
 # Number counts for the tens
-num_len_dict['twenty'] = 6
-num_len_dict['thirty'] = 6
-num_len_dict['fourty'] = 6
-num_len_dict['fifty'] = 5
-num_len_dict['sixty'] = 5
-num_len_dict['seventy'] = 7
-num_len_dict['eighty'] = 6
-num_len_dict['ninety'] = 6
+num_len_dict[20] = 6
+num_len_dict[30] = 6
+num_len_dict[40] = 5
+num_len_dict[50] = 5
+num_len_dict[60] = 5
+num_len_dict[70] = 7
+num_len_dict[80] = 6
+num_len_dict[90] = 6
 
-# Number counts for the hudredes
-num_len_dict['one hundred'] = 10
+# Number counts for the hudred
+num_len_dict[100] = 10
+num_len_dict[200] = 10
+num_len_dict[300] = 12
+num_len_dict[400] = 11
+num_len_dict[500] = 11
+num_len_dict[600] = 10
+num_len_dict[700] = 12
+num_len_dict[800] = 12
+num_len_dict[900] = 11
 
 # Finally - the thousands
+num_len_dict[1000] = 11
+
+# Initialization and looping
+x = 0
+start = 1
+end = 1000
+
+for i in range(start, end+1):
+    # everything under twenty is just the length of the number
+    if i < 20:
+        x += num_len_dict[i]
+    elif i < 100:
+        # when you're 20 -> 99 then you need to break them up
+        # except when you have the base ten.  then it's straight
+        # we can find that with the modulo operator
+        if i % 10 == 0:
+            x += num_len_dict[i]
+        else:
+            x += num_len_dict[int(str(i)[:1]) * 10] + num_len_dict[int(str(i)[-1])]
+    elif i < 1000:
+        if i % 100 == 0:
+            # if the number is exactly a hundred.  just use that key/value
+            x += num_len_dict[i]
+        # for all numbers under 20 for the last two digigts, take one hundred
+        # plus jus the value for the key for that two digit numbers
+        elif int(str(i)[-2:]) < 20:
+            x += num_len_dict[int(str(i)[:1]) * 100] + 3 + num_len_dict[int(str(i)[-2:])]
+        else:
+            # now, for each number in the hundreds where the 10 is modulo 10 (230, 350)
+            # you have to handle this like was done for the tens above, but with
+            # better slicing of the numbers
+            if i % 10 == 0:
+                x += num_len_dict[int(str(i)[:1]) * 100] + 3 + num_len_dict[int(str(i)[-2:])]
+            else:
+                x += num_len_dict[int(str(i)[:1]) * 100] + 3 + num_len_dict[int(str(i)[1]) * 10] + num_len_dict[int(str(i)[-1])]
+
+    else:
+        # finally the use case for 1000 is just to take the key's value
+        x += num_len_dict[i]
 
 
-print(num_len_dict)
+print('Problem 17 =', x) # 21,124 total letters
+
+print("Program took %s seconds to run." % (time.time() - start_time))
