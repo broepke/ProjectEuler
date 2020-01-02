@@ -14,3 +14,31 @@ start_time = time.time()
 # The use of "and" when writing out numbers is in compliance with British usage.
 
 print("Program took %s seconds to run." % (time.time() - start_time))
+
+num_len_dict = {}
+
+num_len_dict['zero'] = 4
+num_len_dict['one'] = 3
+num_len_dict['two'] = 3
+num_len_dict['three'] = 4
+num_len_dict['four'] = 4
+num_len_dict['five'] = 4
+num_len_dict['six'] = 3
+num_len_dict['seven'] = 5
+num_len_dict['eight'] = 5
+num_len_dict['nine'] = 4
+num_len_dict['ten'] = 3
+
+num_len_dict['eleven'] = 6
+num_len_dict['twelve'] = 3
+num_len_dict['thirteen'] = 3
+num_len_dict['fourteen'] = 3
+num_len_dict['fifteen'] = 3
+num_len_dict['sixteen'] = 3
+num_len_dict['seventeen'] = 3
+num_len_dict['eighteen'] = 3
+num_len_dict['nineteen'] = 3
+num_len_dict['twenty'] = 3
+
+
+print(num_len_dict)
