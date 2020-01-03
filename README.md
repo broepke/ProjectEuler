@@ -1,7 +1,7 @@
 # ProjectEuler
 
-Working on Project Euler problems. 
-Each Python file contains 10 problems.  
+Working on Project Euler problems. <br>
+each file contains the solution for the problem listed. 
 
 Learn more at: https://projecteuler.net/
 
