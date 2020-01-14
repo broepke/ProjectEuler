@@ -18,6 +18,6 @@ a = str(a)
 
 for x in a: total += int(x)
 
-print('Problem 19 =', total) # 171
+print('Problem 19 =', total) # 648
 
 print("Program took %s seconds to run." % (time.time() - start_time))
