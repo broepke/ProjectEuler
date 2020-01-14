@@ -12,11 +12,7 @@ start_time = time.time()
 
 total = 0
 
-a = factorial(100)
-
-a = str(a)
-
-for x in a: total += int(x)
+for x in str(factorial(100)): total += int(x)
 
 print('Problem 19 =', total) # 648
 
