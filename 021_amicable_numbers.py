@@ -13,17 +13,26 @@ start_time = time.time()
 
 # Evaluate the sum of all the amicable numbers under 10000.
 
-a = []
-target = 100
+def amicable(x):
+	'''find the amicable number'''
+	total = 0
+	for y in range(1,x):
+		if target % y == 0:
+			total += y
+			
+	return total
 
-for y in range(1,target):
-	for x in range(1,y):
-		if target % x == 0:
-			b = []
-			b.append(x)
-		a.append(sum(b))
-		
+target = 220
+total_amicable = 0
 
-print('Problem 21 =', a) # 
+for x in range(1,target):
+	a = amicable(x)
+	print(a)
+			
+			
+print(total_amicable)
 
+
+
+# print('Problem 21 =', c)
 print("Program took %s seconds to run." % (time.time() - start_time))
