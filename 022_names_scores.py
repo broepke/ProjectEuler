@@ -13,11 +13,27 @@ start_time = time.time()
 
 # What is the total of all the name scores in the file?
 
+total = 0
+
 f = open('p022_names.txt', 'r')
 x = f.readlines()
 f.close()
 
-print(x[0])
+y = x[0].split(',')
 
-print('Problem 22 =', )
+y = sorted(y)
+
+def get_total(name):
+	total = 0
+	for l in name.strip('""'):
+		total += (ord(l) - 64)
+		
+	return total
+	
+for i in y:
+	a = get_total(i)
+	a *= y.index(i) + 1
+	total += a
+
+print('Problem 22 =', total)
 print("Program took %s seconds to run." % (time.time() - start_time))
