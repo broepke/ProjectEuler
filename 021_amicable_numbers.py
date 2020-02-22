@@ -13,26 +13,27 @@ start_time = time.time()
 
 # Evaluate the sum of all the amicable numbers under 10000.
 
-def amicable(x):
-	'''find the amicable number'''
-	total = 0
-	for y in range(1,x):
-		if target % y == 0:
-			total += y
-			
-	return total
+import math
+from functools import lru_cache
 
-target = 220
-total_amicable = 0
+@lru_cache(None)
+def sum_div(n):
+    total = 1
+    for x in range(2, int(math.sqrt(n) + 1)):
+        if n % x == 0:
+            total += x
+            y = n // x
+            if y > x:
+                total += y
+    return total
 
-for x in range(1,target):
-	a = amicable(x)
-	print(a)
-			
-			
-print(total_amicable)
+def amicable_numbers(limit):
+    for a in range(limit):
+        b = sum_div(a)
+        if a != b and sum_div(b) == a:
+            yield a
 
+c = sum(amicable_numbers(10000))
 
-
-# print('Problem 21 =', c)
+print('Problem 21 =', c)
 print("Program took %s seconds to run." % (time.time() - start_time))
