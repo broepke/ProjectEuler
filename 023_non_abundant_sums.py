@@ -20,5 +20,27 @@ start_time = time.time()
 # Find the sum of all the positive integers which cannot be written as the
 # sum of two abundant numbers.
 
-print('Problem 23 =')
+target = 24
+abundant_nums = set()
+
+def get_divisors(y):
+	'''find all the proper divisors for a number'''
+	total = 0
+	
+	for x in range(1, y):
+		if y % x == 0:
+			total += x
+			
+	if total > y:
+		abundant_nums.add(y)
+			
+	return total
+	
+for i in range(1, target+1):
+	get_divisors(i)
+						
+
+print(sorted(abundant_nums))
+
+# print('Problem 23 =')
 print("Program took %s seconds to run." % (time.time() - start_time))
