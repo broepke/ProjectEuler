@@ -41,6 +41,7 @@ for i in range(1, target+1):
 						
 
 print(sorted(abundant_nums))
+print('Pythonista 3')
 
 # print('Problem 23 =')
 print("Program took %s seconds to run." % (time.time() - start_time))
