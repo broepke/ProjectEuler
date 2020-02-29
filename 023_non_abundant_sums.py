@@ -1,5 +1,4 @@
 import time
-
 start_time = time.time()
 
 # A perfect number is a number for which the sum of its proper divisors is
@@ -20,28 +19,58 @@ start_time = time.time()
 # Find the sum of all the positive integers which cannot be written as the
 # sum of two abundant numbers.
 
-target = 24
+target = 28123
+total_sum = 0
 abundant_nums = set()
 
-def get_divisors(y):
-	'''find all the proper divisors for a number'''
-	total = 0
-	
-	for x in range(1, y):
-		if y % x == 0:
-			total += x
-			
-	if total > y:
-		abundant_nums.add(y)
-			
-	return total
-	
-for i in range(1, target+1):
-	get_divisors(i)
-						
 
-print(sorted(abundant_nums))
-print('Pythonista 3')
+def get_abundant(y):
+    '''find all the proper divisors for a number'''
+    total = 0
 
-# print('Problem 23 =')
+    for x in range(1, y):
+        if y % x == 0:
+            total += x
+
+    if total > y:
+        abundant_nums.add(y)
+
+    return abundant_nums
+
+
+def check_sum_abundant(check_num):
+    '''check to see if the number is the sume of two abundant numbers
+    first by checking for each value in the abundant list, if the remainder
+    is in the list anywhere.  todo: need to only check values less than'''
+
+    for i in abundant_list:
+        if i <= check_num:
+            rem = check_num - i
+            if rem in abundant_list:
+                return True
+        else:
+            return False
+
+    return False
+
+
+# create the list (set) of all abundant numbers
+for i in range(1, target + 1):
+    get_abundant(i)
+
+
+# sort the list - just because it's easier to read
+abundant_list = sorted(abundant_nums)
+
+# check to see for each number again in the target, if the number is the sum
+# of any two abundant numbers
+for i in range(1, target + 1):
+    b = check_sum_abundant(i)
+    if b:
+        pass
+    else:
+        total_sum += i
+
+
+print('Problem 23 =', total_sum) # 4179871
 print("Program took %s seconds to run." % (time.time() - start_time))
