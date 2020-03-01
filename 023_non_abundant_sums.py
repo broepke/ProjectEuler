@@ -41,7 +41,7 @@ def get_abundant(y):
 def check_sum_abundant(check_num):
     '''check to see if the number is the sume of two abundant numbers
     first by checking for each value in the abundant list, if the remainder
-    is in the list anywhere.  todo: need to only check values less than'''
+    is in the list anywhere.'''
 
     for i in abundant_list:
         if i <= check_num:
@@ -57,7 +57,6 @@ def check_sum_abundant(check_num):
 # create the list (set) of all abundant numbers
 for i in range(1, target + 1):
     get_abundant(i)
-
 
 # sort the list - just because it's easier to read
 abundant_list = sorted(abundant_nums)

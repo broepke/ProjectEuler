@@ -13,12 +13,8 @@ start_time = time.time()
 # What is the millionth lexicographic permutation of the
 # digits 0, 1, 2, 3, 4, 5, 6, 7, 8 and 9?
 
-rgn = 10
 
-a = list(itertools.permutations(range(rgn)))
+a = list(itertools.permutations(range(10)))[999999]
 
-
-b = (a[999999])
-
-print('Problem 24 =', b) #2783915460
+print('Problem 24 =', a) #2783915460
 print("Program took %s seconds to run." % (time.time() - start_time))
