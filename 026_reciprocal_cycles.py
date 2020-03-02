@@ -20,49 +20,38 @@ start_time = time.time()
 # Find the value of d < 1000 for which 1/d contains the 
 # longest recurring cycle in its decimal fraction part.
 
+def calc_longest_recur_cycle(LIMIT):
+    max_len = 0   # The maximum length
+    max_d = 1     # The 'd' that has maximum length
 
-largest_repeat = 0
-largest_num = 0
-largest_repeat_val = 0
+    for d in range(1, LIMIT):
+        quotient = {0: 0}  # Stores the decimal quotient
+        cur_value = 1      # Variable used to perform division as if by hand
+        len_recur = 0      # Recurring length
 
-def find_repeat(a):
-	''''find the largest repeating string in the decimal form of the number'''
-	
-	a = str(a) # turn the number into a string
-	a = a[2:] # trim off the leading "0."
-	repeat = 0
-	
-	# and (a[0] != a[1] and a[1] != a[2])
-		
-	# remove any number that first are like 1/3
-	if len(a) < 3:
-		print('not repeating')
-		return (1/7)
-	elif a[0] == a[1] and a[1] == a[2] and a[2] == a[3]:
-		print('repeating like 1/3')
-		return (1/7)
-	elif a[1] == a[2] and a[2] == a[3] and a[3] == a[4]:
-		print('a number like 1/6')
-		return (1/7)
-			 
-	for i in range(len(str(a))):	
-		b = a[0:i]
-		print(b)
-		if a.count(b) > 1:
-			repeat = b
+        # Performing division as if by hand
+        while cur_value not in quotient:  # while the value is not recurring
+            len_recur += 1
+            quotient[cur_value] = len_recur
+            cur_value = (cur_value % d) * 10
 
-	return repeat
+        if not cur_value:
+            continue
+
+        # Remove number of values that do not recur
+        len_recur -= quotient[cur_value]
+        # quotient.clear()
+
+        if len_recur > max_len:
+            max_len = len_recur
+            max_d = d
+
+    return max_d, max_len
+    
 
 
-for i in range(2,10):
-	x = find_repeat(1/i)
-	if len(str(x)) > largest_repeat:
-		largest_repeat = len(str(x))
-		largest_repeat_val = x
-		largest_num = i
+a, b = calc_longest_recur_cycle(1000)
 
-print(largest_repeat, largest_repeat_val, largest_num)		
-
-print('Problem 26 =', largest_repeat) #
+print('Problem 26 =', a, b) #983
 print("Program took %s seconds to run." % (time.time() - start_time))
 
