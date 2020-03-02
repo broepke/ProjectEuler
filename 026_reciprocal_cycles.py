@@ -31,19 +31,33 @@ def find_repeat(a):
 	a = str(a) # turn the number into a string
 	a = a[2:] # trim off the leading "0."
 	repeat = 0
-
-	for i in range(len(str(a))):
+	
+	# and (a[0] != a[1] and a[1] != a[2])
+		
+	# remove any number that first are like 1/3
+	if len(a) < 3:
+		print('not repeating')
+		return (1/7)
+	elif a[0] == a[1] and a[1] == a[2] and a[2] == a[3]:
+		print('repeating like 1/3')
+		return (1/7)
+	elif a[1] == a[2] and a[2] == a[3] and a[3] == a[4]:
+		print('a number like 1/6')
+		return (1/7)
+			 
+	for i in range(len(str(a))):	
 		b = a[0:i]
+		print(b)
 		if a.count(b) > 1:
 			repeat = b
 
 	return repeat
 
 
-for i in range(1,10):
+for i in range(2,10):
 	x = find_repeat(1/i)
-	if len(x) > largest_repeat:
-		largest_repeat = len(x)
+	if len(str(x)) > largest_repeat:
+		largest_repeat = len(str(x))
 		largest_repeat_val = x
 		largest_num = i
 
