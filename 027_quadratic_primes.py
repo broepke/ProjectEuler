@@ -44,8 +44,8 @@ print(len(prime_list))
 
 f = open('primes.txt','w')
 
-for p in prime_list:
-	f.write(str(p))
+# for p in prime_list:
+# 	f.write(str(p)+'\n')
 
 	
 f.close()
