@@ -1,5 +1,6 @@
 import time
 import itertools
+import euler
 
 start_time = time.time()
 
@@ -52,12 +53,7 @@ b = []
 c = []
 
 # open up the list of the first 10,000 prime numbers
-f = open('primes.txt','r')
-
-for l in f:
-	prime_list.append(int(l.rstrip('\n')))
-	
-f.close()
+prim_list = euler.read_primes_file()
 
 
 # generate the lists needed to get the cartesian product
