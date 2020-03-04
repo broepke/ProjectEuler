@@ -1,5 +1,5 @@
 import time
-from math import sqrt
+import itertools
 
 start_time = time.time()
 
@@ -25,18 +25,33 @@ start_time = time.time()
 # expression that produces the maximum number of primes for consecutive
 # values of n, starting with n=0
 
-def calc_quadratic(n_start, n_end):
+def calc_quadratic(a, b):
 	
 	not_primes = []
+	consec = 0
+	n_value = 0 
 	
-	for n in range(n_start, n_end+1):
-		a = n*(n+1)+41
-		not_primes.append(a)
-	
-	return not_primes
+	for n in range(1000):
+		result = n * n + (a * n) + b
+		if result in prime_list:
+			consec +=1
+			n_value = n
+		else:
+			return consec, n_value
+			
+	return consec, n_value
+
+
+prime_list = []
+largest_count = 0
+largest_combo = []
+largest_product = 0
+largest_n = 0
+a = []
+b = []
+c = []
 
 # open up the list of the first 10,000 prime numbers
-prime_list = []
 f = open('primes.txt','r')
 
 for l in f:
@@ -45,16 +60,31 @@ for l in f:
 f.close()
 
 
-b = calc_quadratic(0,39)
-c = b.copy()
-
-for x in b:
-	if x in prime_list:
-		c.remove(x)
-		
-print("b", b)
-print("c", c) 
+# generate the lists needed to get the cartesian product
+for x in range(-999,1000):
+	a.append(x)
 	
-print('Problem 27 =')
+for y in range(1,1000):
+	b.append(y)
+
+# Get a new list of all cartesian products for all a & b 
+c = list(itertools.product(a,b))
+
+#loop through the products and call the quadratic function 
+for i in c:
+	a = i[0]
+	b = i[1]
+	quad, quad_n = calc_quadratic(a, b)
+	if quad > largest_count:
+		largest_count = quad
+		largest_n = quad_n
+		largest_combo = [a,b]
+		
+		largest_product = a * b
+		
+print(largest_combo)
+print(largest_n)
+
+print('Problem 27 =', largest_product) # -59231
 print("Program took %s seconds to run." % (time.time() - start_time))
 
