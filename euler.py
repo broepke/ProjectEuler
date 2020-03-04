@@ -20,7 +20,7 @@ def generate_prime_list(prime_count):
 	return prime_list
 	
 	
-def write_primes_file(f_name, primes):
+def write_primes_file(f_name='primes.txt', primes=1000):
 	'''write all the primes to a text file'''
 	
 	f = open(f_name,'w')
@@ -31,7 +31,7 @@ def write_primes_file(f_name, primes):
 	f.close()
 	
 	
-def read_primes_file(f_name):
+def read_primes_file(f_name='primes.txt'):
 	'''Read the primes.txt file and build a list'''
 	prime_list = []
 	
