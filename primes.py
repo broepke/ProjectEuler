@@ -1,6 +1,5 @@
 from math import sqrt
 
-
 def generate_prime_list(prime_count):
 	'''get all prime numbers to a certain number'''
 	prime_list = [2]

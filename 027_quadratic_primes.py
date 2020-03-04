@@ -53,7 +53,7 @@ for x in b:
 		c.remove(x)
 		
 print("b", b)
-print("c", c)
+print("c", c) 
 	
 print('Problem 27 =')
 print("Program took %s seconds to run." % (time.time() - start_time))
