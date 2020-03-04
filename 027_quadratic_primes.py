@@ -25,8 +25,18 @@ start_time = time.time()
 # expression that produces the maximum number of primes for consecutive
 # values of n, starting with n=0
 
-prime_list = []
+def calc_quadratic(n_start, n_end):
+	
+	not_primes = []
+	
+	for n in range(n_start, n_end+1):
+		a = n*(n+1)+41
+		not_primes.append(a)
+	
+	return not_primes
 
+# open up the list of the first 10,000 prime numbers
+prime_list = []
 f = open('primes.txt','r')
 
 for l in f:
@@ -34,6 +44,16 @@ for l in f:
 	
 f.close()
 
+
+b = calc_quadratic(0,39)
+c = b.copy()
+
+for x in b:
+	if x in prime_list:
+		c.remove(x)
+		
+print("b", b)
+print("c", c)
 	
 print('Problem 27 =')
 print("Program took %s seconds to run." % (time.time() - start_time))
