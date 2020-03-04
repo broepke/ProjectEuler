@@ -21,36 +21,67 @@ def generate_prime_list(prime_count=10000):
 		
 	return prime_list
 	
+def generate_fibs_list(n=500):
+	'''Generates a list of a fibbonacci numbers.'''
 	
-def write_primes_file(f_name='primes.txt', num_primes=10000):
+	list = []
+	count = 0
+	a, b = 0, 1
+	
+	while count < n:
+		list.append(a)
+		count += 1
+		a, b = b, a+b
+			
+	return list
+	
+	
+def write_file(type='primes'):
 	'''write all the primes to a text file.  Input is file name 
 	as well as the total number of primes to generate.'''
 	
-	prime_list = generate_prime_list(num_primes)
+	if type == 'primes':
+		list = generate_prime_list(10000)
+		f_name = type + '.txt'
+	elif type == 'fibs':
+		list = generate_fibs_list(500)
+		f_name = type + '.txt'
 	
 	f = open(f_name,'w')
 	
-	for p in prime_list:
+	for p in list:
 		f.write(str(p)+'\n')
 		
 	f.close()
 	
+	return 
 	
-def read_primes_file(f_name='primes.txt'):
+	
+def read_file(type='primes'):
 	'''Reads a text file and build a list input variable is filename.'''
-	prime_list = []
+	list = []
+	
+	if type == 'primes':
+		f_name = type + '.txt'
+	elif type == 'fibs':
+		f_name = type + '.txt'
 	
 	try:
 		f = open(f_name,'r')
 	except:
-		write_primes_file()
+		if type == 'primes':
+			generate_prime_list(10000)
+		elif type == 'fibs':
+			generate_fibs_list(500)
+		
 		f = open(f_name,'r')
 	
 	for l in f:
-		prime_list.append(int(l.rstrip('\n')))
+		list.append(int(l.rstrip('\n')))
 		
 	f.close()
 	
-	return prime_list
+	return list
 	
+foo = read_file('fibs')
 
