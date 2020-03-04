@@ -1,7 +1,9 @@
 from math import sqrt
 
-def generate_prime_list(prime_count):
-	'''get all prime numbers to a certain number'''
+def generate_prime_list(prime_count=10000):
+	'''get all prime numbers to a certain number.  input variables are 
+	the total number of primes desired to be generated.  will return a
+	list with the len of the variable of prime numbers.'''
 	prime_list = [2]
 	num = 3
 	
@@ -20,22 +22,29 @@ def generate_prime_list(prime_count):
 	return prime_list
 	
 	
-def write_primes_file(f_name='primes.txt', primes=1000):
-	'''write all the primes to a text file'''
+def write_primes_file(f_name='primes.txt', num_primes=10000):
+	'''write all the primes to a text file.  Input is file name 
+	as well as the total number of primes to generate.'''
+	
+	prime_list = generate_prime_list(num_primes)
 	
 	f = open(f_name,'w')
 	
-	for p in primes:
+	for p in prime_list:
 		f.write(str(p)+'\n')
 		
 	f.close()
 	
 	
 def read_primes_file(f_name='primes.txt'):
-	'''Read the primes.txt file and build a list'''
+	'''Reads a text file and build a list input variable is filename.'''
 	prime_list = []
 	
-	f = open(f_name,'r')
+	try:
+		f = open(f_name,'r')
+	except:
+		write_primes_file()
+		f = open(f_name,'r')
 	
 	for l in f:
 		prime_list.append(int(l.rstrip('\n')))
@@ -44,11 +53,4 @@ def read_primes_file(f_name='primes.txt'):
 	
 	return prime_list
 	
-# Create primes
-prime_list = generate_prime_list(10000)
 
-# write file
-write_primes_file('primes.txt', prime_list)
-
-# Read File
-new_primes = read_primes_file('primes.txt')
