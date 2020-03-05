@@ -82,6 +82,4 @@ def read_file(type='primes'):
 	f.close()
 	
 	return list
-	
-foo = read_file('fibs')
 
