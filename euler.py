@@ -3,7 +3,7 @@ from math import sqrt
 def generate_prime_list(prime_count=10000):
 	'''get all prime numbers to a certain number.  input variables are 
 	the total number of primes desired to be generated.  will return a
-	list with the len of the variable of prime numbers.'''
+	list with the len of the variable of prime numbers'''
 	prime_list = [2]
 	num = 3
 	
@@ -80,6 +80,6 @@ def read_file(type='primes'):
 		list.append(int(l.rstrip('\n')))
 		
 	f.close()
-	
+
 	return list
 
