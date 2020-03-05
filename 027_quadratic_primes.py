@@ -53,7 +53,7 @@ b = []
 c = []
 
 # open up the list of the first 10,000 prime numbers
-prim_list = euler.read_primes_file('primes')
+prime_list = euler.read_file('primes')
 
 
 # generate the lists needed to get the cartesian product
