@@ -27,19 +27,18 @@ start_time = time.time()
 # values of n, starting with n=0
 
 def calc_quadratic(a, b):
-	
+
 	not_primes = []
 	consec = 0
-	n_value = 0 
-	
-	for n in range(1000):
+	n_value = 0
+	for n in range(100):
 		result = n * n + (a * n) + b
 		if result in prime_list:
 			consec +=1
 			n_value = n
 		else:
 			return consec, n_value
-			
+
 	return consec, n_value
 
 
@@ -59,14 +58,14 @@ prime_list = euler.read_file('primes')
 # generate the lists needed to get the cartesian product
 for x in range(-999,1000):
 	a.append(x)
-	
+
 for y in range(1,1000):
 	b.append(y)
 
-# Get a new list of all cartesian products for all a & b 
+# Get a new list of all cartesian products for all a & b
 c = list(itertools.product(a,b))
 
-#loop through the products and call the quadratic function 
+#loop through the products and call the quadratic function
 for i in c:
 	a = i[0]
 	b = i[1]
@@ -75,12 +74,11 @@ for i in c:
 		largest_count = quad
 		largest_n = quad_n
 		largest_combo = [a,b]
-		
+
 		largest_product = a * b
-		
+
 print(largest_combo)
 print(largest_n)
 
 print('Problem 27 =', largest_product) # -59231
 print("Program took %s seconds to run." % (time.time() - start_time))
-
