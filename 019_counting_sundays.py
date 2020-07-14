@@ -23,19 +23,20 @@ start_year = 1901
 end_year = 2000
 counter = 0
 
+
 def allsundays(year):
-   d = date(year, 1, 1)                    # January 1st
-   d += timedelta(days = 6 - d.weekday())  # First Sunday
-   while d.year == year:
-      yield d
-      d += timedelta(days = 7)
+    d = date(year, 1, 1)  # January 1st
+    d += timedelta(days=6 - d.weekday())  # First Sunday
+    while d.year == year:
+        yield d
+        d += timedelta(days=7)
+
 
 for i in range(start_year, end_year + 1):
-	for d in allsundays(i):
-		if d.day == 1:
-			counter += 1
+    for d in allsundays(i):
+        if d.day == 1:
+            counter += 1
 
-
-print('Problem 19 =', counter, 'Sundays from', start_year, 'to', end_year, 'fell on the first of the month!') # 171
+print('Problem 19 =', counter, 'Sundays from', start_year, 'to', end_year, 'fell on the first of the month!')  # 171
 
 print("Program took %s seconds to run." % (time.time() - start_time))
