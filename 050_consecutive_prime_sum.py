@@ -40,15 +40,16 @@ def upper_bounds(num,con):
 
     return prime_index
 
-t = upper_bounds(limit,consec)
-print(primes[t])
-print((primes[t:t+21]))
+# Get the highest possible index of the primes
+range_max = upper_bounds(limit,consec)
+range_min = 0
 
-for i in range(consec + 1):
-    x = sum(primes[0:i])
-    if x in primes:
-        # add the sum of the first 5 numbers to the primes list
-        prime_sums.append(x)
+#### This is wrong.... - - for j in range(range_min,range_max):
+    for i in range(consec + 1):
+        x = sum(primes[0:i])
+        if x in primes:
+            # add the sum of the first 5 numbers to the primes list
+            prime_sums.append(x)
 
 # Check to see if it's in the Primes file
 prime_max = max(prime_sums)
