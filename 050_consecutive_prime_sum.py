@@ -1,7 +1,7 @@
 import time
 import euler
-start_time = time.time()
 
+start_time = time.time()
 
 # The prime 41, can be written as the sum of six consecutive primes:
 #
@@ -12,7 +12,9 @@ start_time = time.time()
 #
 # Which prime, below one-million, can be written as the sum of the most consecutive primes?
 
+# Set up some of the bounds and starting point
 limit = 1000
+consec = 21
 
 # create the prime list from the Sieve
 primes = []
@@ -21,12 +23,32 @@ primes = euler.read_file(type='primes')
 # Another list of all the sums
 prime_sums = []
 
-for i in range(7):
-	x = sum(primes[0:i])
-	if x in primes:
-		print(x)
-		# add the sum of the first 5 numbers to the primes list
-		prime_sums.append(x)
+
+def upper_bounds(num,con):
+    """find the upper bounds of the range of primes to loop through by dividing the upper bounds
+    by the consecutive starting point."""
+
+    global prime_index
+    j = num / con
+    i = 0
+
+    while i < len(primes):
+        if primes[i] > j:
+            prime_index = i
+            break
+        i += 1
+
+    return prime_index
+
+t = upper_bounds(limit,consec)
+print(primes[t])
+print((primes[t:t+21]))
+
+for i in range(consec + 1):
+    x = sum(primes[0:i])
+    if x in primes:
+        # add the sum of the first 5 numbers to the primes list
+        prime_sums.append(x)
 
 # Check to see if it's in the Primes file
 prime_max = max(prime_sums)
