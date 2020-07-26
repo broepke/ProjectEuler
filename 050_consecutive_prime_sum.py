@@ -12,10 +12,24 @@ start_time = time.time()
 #
 # Which prime, below one-million, can be written as the sum of the most consecutive primes?
 
+limit = 1000
+
+# create the prime list from the Sieve
 primes = []
 primes = euler.read_file(type='primes')
 
-print(sum(primes[0:22]))
+# Another list of all the sums
+prime_sums = []
 
-print('Problem 50 =', )
+for i in range(7):
+	x = sum(primes[0:i])
+	if x in primes:
+		print(x)
+		# add the sum of the first 5 numbers to the primes list
+		prime_sums.append(x)
+
+# Check to see if it's in the Primes file
+prime_max = max(prime_sums)
+
+print('Problem 50 =', prime_max)
 print("Program took %s seconds to run." % (time.time() - start_time))
