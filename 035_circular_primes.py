@@ -74,8 +74,6 @@ for i in primes:
             if all_prime(a):
                 circular_numbers.append(i)
 
-print(len(circular_numbers))
 
-
-print('Problem 35 =')
+print('Problem 35 =', len(circular_numbers))
 print("Program took %s seconds to run." % (time.time() - start_time))
