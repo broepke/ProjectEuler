@@ -4,7 +4,8 @@ import numpy as np
 start_time = time.time()
 
 # Problem 13
-# Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.
+# Work out the first ten digits of the sum of the following
+# one-hundred 50-digit numbers.
 
 s = '\
 37107287533902102798797998220837590246510135740250\
@@ -117,6 +118,3 @@ z = str(z.sum())
 print('Problem 13 =', z[:10])  # 5537376230
 
 print("Program took %s seconds to run." % (time.time() - start_time))
-
-
-

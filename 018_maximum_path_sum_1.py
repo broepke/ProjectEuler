@@ -3,8 +3,8 @@ import numpy as np
 
 start_time = time.time()
 
-# By starting at the top of the triangle below and moving to adjacent numbers on the row below,
-# the maximum total from top to bottom is 23.
+# By starting at the top of the triangle below and moving to adjacent
+# numbers on the row below, the maximum total from top to bottom is 23.
 #
 # 3
 # 7 4
@@ -31,15 +31,17 @@ start_time = time.time()
 # 63 66 04 68 89 53 67 30 73 16 69 87 40 31
 # 04 62 98 27 23 09 70 98 73 93 38 53 60 04 23
 #
-# NOTE: As there are only 16384 routes, it is possible to solve this problem by trying every route.
-# However, Problem 67, is the same challenge with a triangle containing one-hundred rows;
-# it cannot be solved by brute force, and requires a clever method! ;o)
+# NOTE: As there are only 16384 routes, it is possible to solve this
+# problem by trying every route. However, Problem 67, is the same challenge
+# with a triangle containing one-hundred rows; it cannot be solved by
+# brute force, and requires a clever method! ;o)
 
-# the triangle is a classic Pascals triangle when determining paths, but it would be 
-# irrelevant in this case to traverse all options,  here we just need to walk down the
-# triangle selecting the best options with the greatest sum.  Because Pascal's triangle
-# is just a matrix rotated 45 degrees, we can esily turn this into a matrix and walk
-# through it. 
+# the triangle is a classic Pascals triangle when determining paths,
+# but it would be irrelevant in this case to traverse all options,
+# here we just need to walk down the triangle selecting the best options
+# with the greatest sum.  Because Pascal's triangle is just a matrix
+# rotated 45 degrees, we can esily turn this into a matrix and walk
+# through it.
 
 tri = np.array([[75, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00],
                 [95, 64, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00],

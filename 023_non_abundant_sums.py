@@ -71,5 +71,5 @@ for i in range(1, target + 1):
         total_sum += i
 
 
-print('Problem 23 =', total_sum) # 4179871
+print('Problem 23 =', total_sum)  # 4179871
 print("Program took %s seconds to run." % (time.time() - start_time))

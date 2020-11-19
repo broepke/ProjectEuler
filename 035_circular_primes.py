@@ -7,7 +7,8 @@ start_time = time.time()
 # The number, 197, is called a circular prime because all rotations of
 # the digits: 197, 971, and 719, are themselves prime.
 #
-# There are thirteen such primes below 100: 2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79, and 97.
+# There are thirteen such primes below 100:
+# 2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79, and 97.
 #
 # How many circular primes are there below one million?
 
@@ -34,10 +35,11 @@ def cycle_numbers(num):
 
     return cycle_list
 
+
 def all_one_three_seven_nine(num):
     '''Apart from 2 and 5, all prime numbers have to end in 1, 3, 7 or 9 '''
     num_list = []
-    check_list = [1,3,7,9]
+    check_list = [1, 3, 7, 9]
     in_check_list = True
 
     for i in str(num):
@@ -50,8 +52,10 @@ def all_one_three_seven_nine(num):
 
     return in_check_list
 
+
 def all_prime(cycle_list):
-    '''Function to check if all the numbers in a given list are prime numbers'''
+    '''Function to check if all the numbers in a
+    given list are prime numbers'''
     all_primes = True
 
     for i in cycle_list:
@@ -65,7 +69,7 @@ def all_prime(cycle_list):
 # create the prime list from the Sieve
 primes = euler.read_file(type='primes')
 
-circular_numbers = [2,5]
+circular_numbers = [2, 5]
 
 for i in primes:
     if i < 1000001:

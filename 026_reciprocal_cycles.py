@@ -21,37 +21,35 @@ start_time = time.time()
 # longest recurring cycle in its decimal fraction part.
 
 def calc_longest_recur_cycle(LIMIT):
-	max_len = 0   # The maximum length
-	max_d = 1     # The 'd' that has maximum length
-	
-	for d in range(1, LIMIT):
-		quotient = {0: 0}  # Stores the decimal quotient
-		cur_value = 1      # Variable used to perform division as if by hand
-		len_recur = 0      # Recurring length
-		
-		# Performing division as if by hand
-		while cur_value not in quotient:  # while the value is not recurring
-			len_recur += 1
-			quotient[cur_value] = len_recur
-			cur_value = (cur_value % d) * 10
-			
-		if not cur_value:
-			continue
-			
-		# Remove number of values that do not recur
-		len_recur -= quotient[cur_value]
-		# quotient.clear()
-		
-		if len_recur > max_len:
-			max_len = len_recur
-			max_d = d
-			
-	return max_d, max_len
-	
-	
-	
+    max_len = 0   # The maximum length
+    max_d = 1     # The 'd' that has maximum length
+
+    for d in range(1, LIMIT):
+        quotient = {0: 0}  # Stores the decimal quotient
+        cur_value = 1      # Variable used to perform division as if by hand
+        len_recur = 0      # Recurring length
+
+        # Performing division as if by hand
+        while cur_value not in quotient:  # while the value is not recurring
+            len_recur += 1
+            quotient[cur_value] = len_recur
+            cur_value = (cur_value % d) * 10
+
+        if not cur_value:
+            continue
+
+        # Remove number of values that do not recur
+        len_recur -= quotient[cur_value]
+        # quotient.clear()
+
+        if len_recur > max_len:
+            max_len = len_recur
+            max_d = d
+
+    return max_d, max_len
+
+
 a, b = calc_longest_recur_cycle(1000)
 
-print('Problem 26 =', a, b) #983
+print('Problem 26 =', a, b)  # 983
 print("Program took %s seconds to run." % (time.time() - start_time))
-

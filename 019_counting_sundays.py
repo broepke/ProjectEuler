@@ -3,7 +3,8 @@ from datetime import date, timedelta
 
 start_time = time.time()
 
-# You are given the following information, but you may prefer to do some research for yourself.
+# You are given the following information, but you may
+# prefer to do some research for yourself.
 
 # 1 Jan 1900 was a Monday.
 
@@ -14,10 +15,11 @@ start_time = time.time()
 # Which has twenty-eight, rain or shine.
 
 # And on leap years, twenty-nine.
-# A leap year occurs on any year evenly divisible by 4, but not on a 
+# A leap year occurs on any year evenly divisible by 4, but not on a
 # century unless it is divisible by 400.
 
-# How many Sundays fell on the first of the month during the twentieth century (1 Jan 1901 to 31 Dec 2000)?
+# How many Sundays fell on the first of the month during the
+# twentieth century (1 Jan 1901 to 31 Dec 2000)?
 
 start_year = 1901
 end_year = 2000
@@ -37,6 +39,7 @@ for i in range(start_year, end_year + 1):
         if d.day == 1:
             counter += 1
 
-print('Problem 19 =', counter, 'Sundays from', start_year, 'to', end_year, 'fell on the first of the month!')  # 171
+print('Problem 19 =', counter, 'Sundays from', start_year,
+      'to', end_year, 'fell on the first of the month!')  # 171
 
 print("Program took %s seconds to run." % (time.time() - start_time))

@@ -3,24 +3,25 @@ import time
 start_time = time.time()
 
 
-# If the numbers 1 to 5 are written out in words: one, two, three, four, five, then there are
-# 3 + 3 + 5 + 4 + 4 = 19 letters used in total.
+# If the numbers 1 to 5 are written out in words: one, two, three, four, five,
+# then there are 3 + 3 + 5 + 4 + 4 = 19 letters used in total.
 #
 # If all the numbers from 1 to 1000 (one thousand) inclusive were
 # written out in words, how many letters would be used?
 #
-# NOTE: Do not count spaces or hyphens. For example, 342 (three hundred and forty-two)
+# NOTE: Do not count spaces or hyphens. For example, 342
+# (three hundred and forty-two)
 # contains 23 letters and 115 (one hundred and fifteen) contains 20 letters.
-# The use of "and" when writing out numbers is in compliance with British usage.
-
+# The use of "and" when writing out numbers is in compliance with British usage
 
 
 # the approch i'm taking is to use a big dictionary that will hold all the
-# lengths of the words by key's of thir numbers for easy lookup of string length
-# then iterate through all the use cases of how words are built from 1-1000
-# 1-19 are unique words
-# round "tens" and "hundreds" are also unique words
-# and per the instructions above, you build them with the example syntax
+# lengths of the words by key's of thir numbers for easy lookup of string
+# length then iterate through all the use cases of how words are built
+# from 1-1000 1-19 are unique words round "tens" and "hundreds" are also
+# unique words and per the instructions above, you build them with the
+# example syntax
+
 num_len_dict = {}
 
 # Number counts for single digits
@@ -75,7 +76,7 @@ x = 0
 start = 1
 end = 1000
 
-for i in range(start, end+1):
+for i in range(start, end + 1):
     # everything under twenty is just the length of the number
     if i < 20:
         x += num_len_dict[i]
@@ -86,7 +87,8 @@ for i in range(start, end+1):
         if i % 10 == 0:
             x += num_len_dict[i]
         else:
-            x += num_len_dict[int(str(i)[:1]) * 10] + num_len_dict[int(str(i)[-1])]
+            x += num_len_dict[int(str(i)[:1]) * 10] + \
+                num_len_dict[int(str(i)[-1])]
     elif i < 1000:
         if i % 100 == 0:
             # if the number is exactly a hundred.  just use that key/value
@@ -94,21 +96,24 @@ for i in range(start, end+1):
         # for all numbers under 20 for the last two digigts, take one hundred
         # plus jus the value for the key for that two digit numbers
         elif int(str(i)[-2:]) < 20:
-            x += num_len_dict[int(str(i)[:1]) * 100] + 3 + num_len_dict[int(str(i)[-2:])]
+            x += num_len_dict[int(str(i)[:1]) * 100] + \
+                3 + num_len_dict[int(str(i)[-2:])]
         else:
-            # now, for each number in the hundreds where the 10 is modulo 10 (230, 350)
-            # you have to handle this like was done for the tens above, but with
-            # better slicing of the numbers
+            # now, for each number in the hundreds where the 10 is modulo
+            # 10 (230, 350) you have to handle this like was done for the
+            # tens above, but with better slicing of the numbers
             if i % 10 == 0:
-                x += num_len_dict[int(str(i)[:1]) * 100] + 3 + num_len_dict[int(str(i)[-2:])]
+                x += num_len_dict[int(str(i)[:1]) * 100] + \
+                    3 + num_len_dict[int(str(i)[-2:])]
             else:
-                x += num_len_dict[int(str(i)[:1]) * 100] + 3 + num_len_dict[int(str(i)[1]) * 10] + num_len_dict[int(str(i)[-1])]
+                x += num_len_dict[int(str(i)[:1]) * 100] + 3 + num_len_dict[int(
+                    str(i)[1]) * 10] + num_len_dict[int(str(i)[-1])]
 
     else:
         # finally the use case for 1000 is just to take the key's value
         x += num_len_dict[i]
 
 
-print('Problem 17 =', x) # 21,124 total letters
+print('Problem 17 =', x)  # 21,124 total letters
 
 print("Program took %s seconds to run." % (time.time() - start_time))

@@ -2,6 +2,7 @@ import time
 
 start_time = time.time()
 
+
 def listPrep(file):
     f = open(file, 'r')
     x = f.readlines()

@@ -16,5 +16,5 @@ start_time = time.time()
 
 a = list(itertools.permutations(range(10)))[999999]
 
-print('Problem 24 =', a) #2783915460
+print('Problem 24 =', a)  # 2783915460
 print("Program took %s seconds to run." % (time.time() - start_time))

@@ -1,10 +1,8 @@
-import numpy as np
-from math import sqrt
 import time
 
 start_time = time.time()
 
-# A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
+# A Pythagorean triplet is a set of three natural numbers, a < b < c, for which
 #
 # a2 + b2 = c2
 # For example, 3^22 + 4^2 = 9 + 16 = 25 = 5^2.

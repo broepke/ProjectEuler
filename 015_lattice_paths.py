@@ -13,11 +13,8 @@ start_time = time.time()
 n = 40
 k = 20
 
-lattice = int(factorial(n)/(factorial(k) ** 2))
+lattice = int(factorial(n) / (factorial(k) ** 2))
 
-print('Problem 15 =', lattice) # 137,846,528,820
+print('Problem 15 =', lattice)  # 137,846,528,820
 
 print("Program took %s seconds to run." % (time.time() - start_time))
-
-
-

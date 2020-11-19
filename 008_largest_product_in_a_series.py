@@ -1,5 +1,3 @@
-import numpy as np
-from math import sqrt
 import time
 
 start_time = time.time()
