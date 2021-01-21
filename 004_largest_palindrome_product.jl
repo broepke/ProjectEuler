@@ -17,7 +17,7 @@ largest_found = 0
 largest_a = 0
 largest_b = 0
 
-for a in reverse(900:999)
+@time for a in reverse(900:999)
     b = 999
     found = false
     while found != true
@@ -32,5 +32,4 @@ for a in reverse(900:999)
     end
 end
 
-print("Question 4 = ", largest_found,
-      "(", largest_a, largest_b, ")")  # 906609 ( 993 913 )
+print("Question 4 = ", largest_found, "(", largest_a, largest_b, ")")  # 906609 ( 993 913 )
