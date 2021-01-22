@@ -43,34 +43,40 @@ function get_largest(m_subset, largest)
     return largest
 end
 
-top = 0
-largest_in_row = 0
 
-# Get the largest value for the DOWN and to the RIGHT diagonal
-for i in (-16:16)
-    largest_in_row = get_largest(diag(m, i), top)
-    top = max(largest_in_row, top)
+
+function find_top()
+    top = 0
+    largest_in_row = 0
+    # Get the largest value for the DOWN and to the RIGHT diagonal
+    for i in (-16:16)
+        largest_in_row = get_largest(diag(m, i), top)
+        top = max(largest_in_row, top)
+    end
+
+    # Get the largest value for the DOWN and to the LEFT diagonal
+    flip_m = reverse(m, dims = 2)
+    for i in (-16:16)
+        largest_in_row = get_largest(diag(flip_m, i), top)
+        top = max(largest_in_row, top)
+    end
+
+    # Get the largest value for each ROW
+    for i in (1:20)
+        largest_in_row = get_largest(m[i, :], top)
+        top = max(largest_in_row, top)
+    end
+
+    # Get the largest value for each COLUMN
+    for i in (1:20)
+        largest_in_row = get_largest(m[:, i], top)
+        top = max(largest_in_row, top)
+    end
+
+    return top
 end
 
-# Get the largest value for the DOWN and to the LEFT diagonal
-flip_m = reverse(m, dims = 2)
-for i in (-16:16)
-    largest_in_row = get_largest(diag(flip_m, i), top)
-    top = max(largest_in_row, top)
-end
+x = 0
+@time x = find_top()
 
-# Get the largest value for each ROW
-for i in (1:20)
-    largest_in_row = get_largest(m[i, :], top)
-    top = max(largest_in_row, top)
-end
-
-# Get the largest value for each COLUMN
-for i in (1:20)
-    largest_in_row = get_largest(m[:, i], top)
-    top = max(largest_in_row, top)
-end
-
-
-
-print("Problem 11 = ", top)  # 70600674
+print("Problem 11 = ", x)  # 70600674
