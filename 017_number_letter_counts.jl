@@ -1,8 +1,3 @@
-import time
-
-start_time = time.time()
-
-
 # If the numbers 1 to 5 are written out in words: one, two, three, four, five,
 # then there are 3 + 3 + 5 + 4 + 4 = 19 letters used in total.
 #
@@ -15,14 +10,14 @@ start_time = time.time()
 # The use of "and" when writing out numbers is in compliance with British usage
 
 
-# the approach i'm taking is to use a big dictionary that will hold all the
-# lengths of the words by key's of their numbers for easy lookup of string
+# the approch i'm taking is to use a big dictionary that will hold all the
+# lengths of the words by key's of thir numbers for easy lookup of string
 # length then iterate through all the use cases of how words are built
 # from 1-1000 1-19 are unique words round "tens" and "hundreds" are also
 # unique words and per the instructions above, you build them with the
 # example syntax
 
-num_len_dict = {}
+num_len_dict = Dict()
 
 # Number counts for single digits
 num_len_dict[1] = 3
@@ -57,7 +52,7 @@ num_len_dict[70] = 7
 num_len_dict[80] = 6
 num_len_dict[90] = 6
 
-# Number counts for the hundred
+# Number counts for the hudred
 num_len_dict[100] = 10
 num_len_dict[200] = 10
 num_len_dict[300] = 12
@@ -73,47 +68,50 @@ num_len_dict[1000] = 11
 
 # Initialization and looping
 x = 0
-start = 1
-end = 1000
 
-for i in range(start, end + 1):
+@time for i in (1 : 1000)
     # everything under twenty is just the length of the number
-    if i < 20:
+    if i < 20
         x += num_len_dict[i]
-    elif i < 100:
+    elseif i < 100
         # when you're 20 -> 99 then you need to break them up
         # except when you have the base ten.  then it's straight
         # we can find that with the modulo operator
-        if i % 10 == 0:
+        if i % 10 == 0
             x += num_len_dict[i]
-        else:
-            x += num_len_dict[int(str(i)[:1]) * 10] + \
-                num_len_dict[int(str(i)[-1])]
-    elif i < 1000:
-        if i % 100 == 0:
+        else
+            x += num_len_dict[parse(Int16, (string(i)[1])) * 10]
+            x += num_len_dict[parse(Int16, (string(i)[end]))]
+        end
+    elseif i < 1000
+        if i % 100 == 0
             # if the number is exactly a hundred.  just use that key/value
             x += num_len_dict[i]
         # for all numbers under 20 for the last two digigts, take one hundred
-        # plus jus the value for the key for that two digit numbers
-        elif int(str(i)[-2:]) < 20:
-            x += num_len_dict[int(str(i)[:1]) * 100] + \
-                3 + num_len_dict[int(str(i)[-2:])]
-        else:
+        # plus just the value for the key for that two digit numbers
+        elseif parse(Int16,(string(i)[end-1:end])) < 20
+            x += num_len_dict[parse(Int16, (string(i)[1])) * 100]
+            x += 3 # and
+            x += num_len_dict[parse(Int16, (string(i)[end-1:end]))]
+        else
             # now, for each number in the hundreds where the 10 is modulo
             # 10 (230, 350) you have to handle this like was done for the
             # tens above, but with better slicing of the numbers
-            if i % 10 == 0:
-                x += num_len_dict[int(str(i)[:1]) * 100] + \
-                    3 + num_len_dict[int(str(i)[-2:])]
-            else:
-                x += num_len_dict[int(str(i)[:1]) * 100] + 3 + num_len_dict[int(
-                    str(i)[1]) * 10] + num_len_dict[int(str(i)[-1])]
-
-    else:
+            if i % 10 == 0
+                x += num_len_dict[parse(Int16, (string(i)[1])) * 100]
+                x += 3 # and
+                x += num_len_dict[parse(Int16, (string(i)[end-1:end]))]
+            else
+                x += num_len_dict[parse(Int16, (string(i)[1])) * 100]
+                x += 3 # and
+                x += num_len_dict[parse(Int16, (string(i)[2])) * 10]
+                x += num_len_dict[parse(Int16, (string(i)[end]))]
+            end
+        end
+    else
         # finally the use case for 1000 is just to take the key's value
         x += num_len_dict[i]
+    end
+end
 
-
-print('Problem 17 =', x)  # 21,124 total letters
-
-print("Program took %s seconds to run." % (time.time() - start_time))
+print("Problem 17 = ", x)  # 21,124 total letters
