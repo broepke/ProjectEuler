@@ -11,10 +11,10 @@
 
 function sum_div(n)
     total = 1
-    for x in (2 : floor(sqrt(num)) + 1)
+    for x in (2:floor(sqrt(n))+1)
         if n % x == 0
             total += x
-            y = n // x
+            y = fld(n, x)
             if y > x
                 total += y
             end
@@ -23,15 +23,21 @@ function sum_div(n)
     return total
 end
 
-function amicable_numbers(limit)
-    for a in (limit)
-        b = sum_div(a)
-        if a != b && sum_div(b) == a
-            return a
-        end
+function amicable_numbers(a)
+    b = sum_div(a)
+    if a != b && sum_div(b) == a
+        return a
     end
 end
 
-c = sum(amicable_numbers(10000))
+holder = []
 
-print("Problem 21 = ", c)
+
+for i in (1:10000)
+    c = amicable_numbers(i)
+    if c != nothing
+        append!(holder, c)
+    end
+end
+
+print("Problem 21 = ", sum(holder)) # 31626
