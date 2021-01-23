@@ -32,6 +32,6 @@ function fib(n)
     return (c)
 end
 
-last_idx = fib(1000)
+@time last_idx = fib(1000)
 
 print("Problem 25 = ", last_idx)  # 4782
