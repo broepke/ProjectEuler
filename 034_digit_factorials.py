@@ -24,5 +24,5 @@ for x in range(3, 100000):
 
 print(num_list)
 
-print('Problem 34 =', sum(num_list))
+print('Problem 34 =', sum(num_list)) # 40730
 print("Program took %s seconds to run." % (time.time() - start_time))
