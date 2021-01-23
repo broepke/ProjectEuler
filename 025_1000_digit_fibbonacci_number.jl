@@ -23,7 +23,7 @@
 last_idx = 0
 
 function fib(n)
-    a, b, c = 0, 1, 0
+    a, b, c = big(0), big(1), big(0)
     while length(digits(a)) <= n -1
         c += 1
         a, b = b, a + b
