@@ -5,9 +5,11 @@
 # This can be solved with a calculator using binomial theorem.  a.k.a = N choose K.
 # rows + columns = n, and since we can only go down/right, divide that by 2 for k
 
-n = 40
-k = 20
+library(pracma)
 
-@time lattice = binomial(n, k)
+n <- 40
+k <- 20
 
-print("Problem 15 = ", lattice)  # 137,846,528,820
+lattice <- nchoosek(n, k)
+
+print(paste("Problem 15 = ", lattice))  # 137,846,528,820
