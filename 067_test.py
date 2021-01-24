@@ -6,7 +6,7 @@ start_time = time.time()
 
 tri = np.genfromtxt('067_triangle_tab.txt', delimiter="\t")
 
-total = 75
+total = 59
 row = 0
 col = 0
 

@@ -24,9 +24,9 @@ function upper_bounds(limit, consec)
 
     global prime_index
     j = limit / consec
-    i = 0
+    i = 1
 
-    while i < length(primes)-1
+    while i < length(primes)
         if primes[i] > j
             prime_index = i
             break
@@ -34,7 +34,7 @@ function upper_bounds(limit, consec)
         i += 1
     end
 
-    return prime_index
+    return prime_index -1 #Need to remove 1.  Julia is not zero based
 end
 
 
@@ -45,7 +45,7 @@ function longest_consecutive_possible(limit)
 
     tmp_list = []
 
-    for i in (1 : length(primes))
+    for i in (0 : length(primes))
         push!(tmp_list, i)
         if sum(tmp_list) > limit
             break
@@ -62,7 +62,7 @@ range_max = upper_bounds(limit, consec)
 longest = 0
 
 # 2 dimensional loop through all the possible combinations
-for j in (0 : range_max)
+for j in (1 : range_max)
     for i in (j : consec + 1)
         x = sum(primes[j:i])
         length = i - j
@@ -75,7 +75,7 @@ for j in (0 : range_max)
 end
 
 # Check to see if it's in the Primes file
-prime_max = max(prime_sums)
+prime_max = maximum(prime_sums)
 
 
-print("Problem 50 = ", prime_max, " and was ", longest, " digits in length.")
+print("Problem 50 = ", prime_max) # 997651

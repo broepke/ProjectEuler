@@ -1,22 +1,27 @@
 
-using DelimitedFiles
-
-# create the prime list from the Sieve
-binTree = readdlm("067_triangle_tab.txt", Int32)
-
-
-
-for i in (2 : length(binTree))
-    binTree[i , 1] += binTree[i - 1 , 1]
-    binTree[i , length(binTree[i]) - 1] += binTree[i - 1 , length(binTree[i - 1]) - 1]
-end
-
-for i in (3 : length(binTree))
-    for j in (2 : length(binTree[i]) - 1)
-        binTree[i , j] += maximum(binTree[i - 1 , j - 1], binTree[i - 1 , j])
+nums = []
+open("067_triangle.txt") do file
+    for ln in eachline(file)
+        push!(nums, ln)
     end
 end
 
-total = maximum(binTree[length(binTree) - 1])
+int_list = Array{Int}[]
+for i in nums
+    tl = split(i)
+    push!(int_list, [parse(Int, j) for j in tl])
+end
 
-print("Problem 18 = ", total)  # 7273
+function find_max(mat)
+    max_map = mat[length(mat)]
+    for i in (length(mat)-1):-1:1
+        temp_mat = mat[i]
+        for j in 1:i
+            temp_mat[j] += maximum([max_map[j], max_map[j+1]])
+        end
+        max_map = temp_mat
+    end
+    return max_map[1]
+end
+
+@time find_max(int_list)

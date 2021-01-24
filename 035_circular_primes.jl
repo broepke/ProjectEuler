@@ -12,11 +12,27 @@ function cycle_numbers(num)
     "Function to cycle a number into all its possible cycle combinations"
 
     cycle_list = []
+    num_list = []
 
-    # Push the number into the first position of the list
+    # Turn the number into a string so we can shuffle it
+    for i in string(num)
+        push!(num_list, parse(Int64, i))
+    end
+
     push!(cycle_list, num)
-    # Push the reverse of the number into the list (via string)
-    push!(cycle_list, parse(Int64, reverse(string(num))))
+
+
+    for j in (1 : length(num_list)-1)
+        pop = pop!(num_list)
+        prepend!(num_list, pop)
+        s = ""
+        st = ""
+        for i in num_list
+            s = string(i)
+            st = st * s
+        end
+        push!(cycle_list, parse(Int64, st))
+    end
 
     return cycle_list
 end
@@ -33,26 +49,14 @@ function all_one_three_seven_nine(num)
     end
 
     for i in num_list
-        if i in check_list == false
+        if i ∉ check_list
             in_check_list = false
             break
         end
     end
 
     return in_check_list
-end
 
-all_one_three_seven_nine(197)
-
-for i in string(num)
-    push!(num_list, parse(Int64, i))
-end
-
-for i in num_list
-    if i in check_list == false
-        in_check_list = false
-        break
-    end
 end
 
 
@@ -62,8 +66,7 @@ function all_prime(cycle_list)
     all_primes = true
 
     for i in cycle_list
-        if i
-            not in primes
+        if i ∉ primes
             all_primes = false
             break
         end
@@ -71,8 +74,6 @@ function all_prime(cycle_list)
 
     return all_primes
 end
-
-
 
 
 
@@ -86,7 +87,7 @@ for i in primes
         if all_one_three_seven_nine(i)
             a = cycle_numbers(i)
             if all_prime(a)
-                circular_numbers.append(i)
+                push!(circular_numbers, i)
             end
         end
     end
