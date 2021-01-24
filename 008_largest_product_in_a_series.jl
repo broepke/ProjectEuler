@@ -10,8 +10,6 @@ the_end = 13
 largest = 0
 
 @time for i in (1 : length(digits))
-    # This next conditional feels hacky the loop was going to 1001
-    # but still coming up with the right answer.  Unsure how to fix
     if the_end <= length(digits)
         dig_str = SubString(digits, the_start:the_end)
         total = 1

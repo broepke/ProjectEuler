@@ -26,4 +26,4 @@ end
 
 @time total = sum_of_primes(3)
 
-print("Question 10 = ", total)  # 14291382892
+print("Question 10 = ", total)  # 142913828922
