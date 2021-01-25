@@ -1,9 +1,12 @@
+# Question 11
+# What is the greatest product of four adjacent numbers in the same direction
+# (up, down, left, right, or diagonally) in the 20×20 grid?
 
 library(pracma)
 
-start_time = Sys.time()
+start_time <- Sys.time()
 
-vec = c(8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8, 49, 
+vec <- c(8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8, 49, 
     49, 99, 40, 17, 81, 18, 57, 60, 87,
     17, 40, 98, 43, 69, 48, 4, 56, 62, 0, 81, 49, 31, 73, 55, 79, 14, 29, 93, 71,
     40, 67, 53, 88, 30, 3, 49, 13, 36, 65, 52, 70, 95, 23, 4, 60, 11, 42, 69, 24,
@@ -35,23 +38,23 @@ get_largest <- function (m_subset, largest){
   b <- 2
   c <- 3 
   d <- 4
-  total = 0
+  total <- 0
   
   for (i in (1:(length(m_subset)-3))){
-    total = m_subset[a] * m_subset[b] * m_subset[c] * m_subset[d]
+    total <- m_subset[a] * m_subset[b] * m_subset[c] * m_subset[d]
     a <- a + 1
     b <- b + 1
     c <- c + 1
     d <- d + 1
-    largest = max(largest, total)
+    largest <- max(largest, total)
   }
   
   return (largest)
 }
 
 
-top = 0
-largest_in_row = 0
+top <- 0
+largest_in_row <- 0
 
 # Get the largest value for the DOWN and to the RIGHT diagonal
 
@@ -59,15 +62,15 @@ diags <- row(m) - col(m)
 diag_rows <- split(m, diags)
 
 for (i in (-16:16)){
-  largest_in_row = get_largest(diag_rows[[as.character(i)]], top)
-  top = max(largest_in_row, top)
+  largest_in_row <- get_largest(diag_rows[[as.character(i)]], top)
+  top <- max(largest_in_row, top)
 }
 
 
 
 find_top <- function(){
-  top = 0
-  largest_in_row = 0
+  top <- 0
+  largest_in_row <- 0
   
   
   # Get the largest value for the DOWN and to the RIGHT diagonal
@@ -75,45 +78,45 @@ find_top <- function(){
   diag_rows <- split(m, diags)
   
   for (i in (-16:16)){
-    largest_in_row = get_largest(diag_rows[[as.character(i)]], top)
-    top = max(largest_in_row, top)
+    largest_in_row <- get_largest(diag_rows[[as.character(i)]], top)
+    top <- max(largest_in_row, top)
   }
 
   
   # Get the largest value for the DOWN and to the LEFT diagonal
-  flip_m = fliplr(m)
+  flip_m <- fliplr(m)
   diags <- row(flip_m) - col(flip_m)
   diag_rows <- split(flip_m, diags)
   
   for (i in (-16:16)){
-    largest_in_row = get_largest(diag_rows[[as.character(i)]], top)
-    top = max(largest_in_row, top) 
+    largest_in_row <- get_largest(diag_rows[[as.character(i)]], top)
+    top <- max(largest_in_row, top) 
   }
 
   
   # Get the largest value for each ROW
   for (i in (1:20)){
-    largest_in_row = get_largest(m[i,], top)
-    top = max(largest_in_row, top)
+    largest_in_row <- get_largest(m[i,], top)
+    top <- max(largest_in_row, top)
   }
 
   
   # Get the largest value for each COLUMN
   for (i in (1:20)){
-    largest_in_row = get_largest(m[, i], top)
-    top = max(largest_in_row, top)
+    largest_in_row <- get_largest(m[, i], top)
+    top <- max(largest_in_row, top)
   }
 
   return (top)
 }
 
 
-x = 0
-x = find_top()
+x <- 0
+x <- find_top()
 
 print(paste("Problem 11 = ", x))  # 70600674
 
 
 
-end_time = Sys.time()
+end_time <- Sys.time()
 print(end_time - start_time)

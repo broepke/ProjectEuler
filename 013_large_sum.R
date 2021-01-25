@@ -2,12 +2,12 @@
 # Work out the first ten digits of the sum of the following
 # one-hundred 50-digit numbers.
 
-start_time = Sys.time()
+start_time <- Sys.time()
 
 options(scipen=999)
 library(stringi)
 
-lines = "37107287533902102798797998220837590246510135740250
+lines <- "37107287533902102798797998220837590246510135740250
 46376937677490009712648124896970078050417018260538
 74324986199524741059474233309513058123726617309629
 91942213363574161572522430563301811072406154908250
@@ -108,18 +108,18 @@ lines = "37107287533902102798797998220837590246510135740250
 20849603980134001723930671666823555245252804609722
 53503534226472524250874054075591789781264330331690"
 
-split_lines = stri_split_lines1(lines)
+split_lines <- stri_split_lines1(lines)
 
-total = 0
+total <- 0
 
 for (line in split_lines){
   total <- total + as.numeric(line)
 }
 
 
-total = as.character(total)
+total <- as.character(total)
 
 print(paste("Problem 13 = ", substr(total, 1, 10)))  # 5537376230
 
-end_time = Sys.time()
+end_time <- Sys.time()
 print(end_time - start_time)

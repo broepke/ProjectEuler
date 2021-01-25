@@ -15,7 +15,7 @@
 #
 # NOTE: Once the chain starts the terms are allowed to go above one million.
 
-start_time = Sys.time()
+start_time <- Sys.time()
 
 largest <- 0
 starting <- 0
@@ -25,7 +25,7 @@ for (n in (800000:1000001)){
   starting_n <- n
   while (n > 1){
     if (n %% 2 == 0){
-      n = n / 2
+      n <- n / 2
       count <- count + 1
     } else{
       n <- n * 3 + 1
@@ -42,5 +42,5 @@ for (n in (800000:1000001)){
 
 print(paste("Problem 14 = ", starting))  # 837799
 
-end_time = Sys.time()
+end_time <- Sys.time()
 print(end_time - start_time)

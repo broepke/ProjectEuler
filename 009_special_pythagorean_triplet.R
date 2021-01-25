@@ -6,7 +6,7 @@
 # There exists exactly one Pythagorean triplet for which a + b + c = 1000.
 # Find the product abc.
 
-start_time = Sys.time()
+start_time <- Sys.time()
 
 pythag <- function (a, b, c){
   if (a ^ 2 + b ^ 2 == c ^ 2){
@@ -31,5 +31,5 @@ for (num in a){
 }
 
 
-end_time = Sys.time()
+end_time <- Sys.time()
 print(end_time - start_time)

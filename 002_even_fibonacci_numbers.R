@@ -5,18 +5,18 @@
 # By considering the terms in the Fibonacci sequence whose values do not
 # exceed four million, find the sum of the even-valued terms.
 
-first = 1
-second = 2
-fib = 3
-total = 2
+first <- 1
+second <- 2
+fib <- 3
+total <- 2
 
 while (fib < 4000000){
-  fib = first + second
+  fib <- first + second
   if (fib %% 2 == 0){
-    total = total + fib
+    total <- total + fib
   }
-  first = second
-  second = fib 
+  first <- second
+  second <- fib 
 }
 
 

@@ -122,5 +122,5 @@ for (i in (1 : 1000)){
 
 print(paste("Problem 17 = ", x))  # 21,124 total letters
 
-end_time = Sys.time()
+end_time <- Sys.time()
 print(end_time - start_time)

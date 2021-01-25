@@ -9,19 +9,19 @@
 
 sum_square_diff <- function (alist){
   # sum of squares
-  a = alist ^ 2
-  a = sum(a)
+  a <- alist ^ 2
+  a <- sum(a)
   
   # square of sum
-  b = sum(alist)
-  b = b ^ 2
+  b <- sum(alist)
+  b <- b ^ 2
   
   return (b - a)
 }
 
 
-x = seq(1:100)
+x <- seq(1:100)
 
-total = sum_square_diff(x)
+total <- sum_square_diff(x)
 
 print(paste("Question 6 = ", total))  # 25164150

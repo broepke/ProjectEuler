@@ -3,7 +3,7 @@
 # Find the thirteen adjacent digits in the 1000-digit number that
 # have the greatest product. What is the value of this product?
 
-start_time = Sys.time()
+start_time <- Sys.time()
 
 library(stringr)
 
@@ -36,6 +36,6 @@ for (i in (1 : str_length(digits))){
 
 print(paste("Question 8 =", largest))  # 23514624000
 
-end_time = Sys.time()
+end_time <- Sys.time()
 print(end_time - start_time)
 

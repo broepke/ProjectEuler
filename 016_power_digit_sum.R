@@ -24,5 +24,5 @@ t <- sum(t)
 
 print(paste("Problem 16 = ", t))  # 1366
 
-end_time = Sys.time()
+end_time <- Sys.time()
 print(end_time - start_time)

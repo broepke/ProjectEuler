@@ -6,7 +6,7 @@
 # What is the value of the first triangle number to have over five
 # hundred divisors?
 
-start_time = Sys.time()
+start_time <- Sys.time()
 
 
 triangle <- function(){
@@ -31,9 +31,9 @@ triangle <- function(){
 }
 
 
-return_vals = triangle()
+return_vals <- triangle()
 
 print(paste("Problem 12 =", return_vals[1], " number of divisors =", return_vals[2]))  # 76576500
 
-end_time = Sys.time()
+end_time <- Sys.time()
 print(end_time - start_time)
