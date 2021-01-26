@@ -16,22 +16,29 @@
 # How many Sundays fell on the first of the month during the
 # twentieth century (1 Jan 1901 to 31 Dec 2000)?
 
-using Dates
+library(lubridate)
+start_time <- Sys.time()
 
-start_year = 1901
-end_year = 2000
-counter = 0
+start_year <- 1901
+end_year <- 2000
+counter <- 0
 
-for x in (start_year:end_year)
-    d = Date(x, 1, 1)
-    d = d + Dates.Day(7 - Dates.dayofweek(d))
-    this_year = Date(x)
-    while Dates.year(d) == Dates.year(this_year)
-        if Dates.day(d) == 1
-            counter += 1
-        end
-        d += Dates.Day(7)
-    end
-end
+for (x in (start_year:end_year)) {
+  d <- as.Date(paste(x, "-1-1", sep = ""))
+  d <-
+    d + (7 - wday(d, week_start = getOption("lubridate.week.start", 1)))
+  this_year <- as.Date(paste(x, "-1-1", sep = ""))
+  
+  while (year(d) == year(this_year)) {
+    if (day(d) == 1) {
+      counter = counter + 1
+    }
+    d = d + 7
+  }
+}
 
-print("Problem 19 = ", counter) #171
+
+print(paste("Problem 19 =", counter)) # 171
+
+end_time <- Sys.time()
+print(end_time - start_time)
