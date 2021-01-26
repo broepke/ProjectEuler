@@ -15,26 +15,31 @@
 # billion years to check them all. There is an efficient algorithm to solve it.
 # ;o)
 
+library(pracma)
+library(stringr)
 
-using DelimitedFiles
+start_time <- Sys.time()
 
-tri = readdlm("067_triangle_tab.txt", Int32)
+tri <- read.delim("067_triangle_tab.txt", sep = "\t", header = FALSE)
+
 
 # Matrix of zeros to store max values
-new_tri = zeros(99,99)
+new_tri <- matrix(0, nrow = 99, ncol = 99)
 
-@time for row in reverse(1:99)
-        for col in (1:length(tri[row,:][tri[row,:] .> 0]))
-                new_tri[row, col] = max(tri[row, col] + tri[row + 1, col],
-                tri[row, col] + tri[row + 1, col + 1])
-        end
-
+for (row in rev(1:99)) {
+  # Calculate Max values
+  for (col in 1:length(tri[row, ][tri[row, ] != 0])) {
+    new_tri[row, col] <-
+      max(tri[row, col] + tri[row + 1, col], tri[row, col] + tri[row + 1, col + 1])
+  }
+  
   # replace values in original Matrix with calculated max values
-  for col in (1:length(tri[row,:][tri[row,:] .> 0]))
-          tri[row, col] = new_tri[row, col]
-  end
-end
+  for (col in 1:length(tri[row, ][tri[row, ] != 0])) {
+    tri[row, col] <- new_tri[row, col]
+  }
+}
 
-tri[1:99, 1:99] #full pyramid of max values
+print(paste("Problem 18 = ", tri[1, 1]))  #7273
 
-print("Problem 18 = ", tri[1, 1])
+end_time <- Sys.time()
+print(end_time - start_time)

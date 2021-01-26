@@ -55,52 +55,21 @@ tri = [75 00 00 00 00 00 00 00 00 00 00 00 00 00 00 ;
         4 62 98 27 23 9 70 98 73 93 38 53 60 4 23]
 
 
-function get_largest_path(row, col, total)
+# Matrix of zeros to store max values
+new_tri = zeros(14,14)
 
-    # Find the biggest path by comparing each one and finding the max in an array
-    o1 = tri[row , col] + tri[row + 1 , col]
-    o2 = tri[row , col] + tri[row + 1 , col + 1]
+for row in reverse(1:14)
+        for col in (1:length(tri[row,:][tri[row,:] .> 0]))
+                new_tri[row, col] = max(tri[row, col] + tri[row + 1, col],
+                tri[row, col] + tri[row + 1, col + 1])
+        end
 
-    o3 = tri[row , col + 1] + tri[row + 1 , col + 1]
-    o4 = tri[row , col + 1] + tri[row + 1 , col + 2]
-
-    # Increment the rows based on what the largest option was
-    max_array = [o1, o2, o3, o4]
-    mv, opt = findmax(max_array)
-
-
-    if opt[1 , 1] == 1
-        total += tri[row , col]
-        total += tri[row + 1 , col]
-        row += 1
-        col = col
-    elseif opt[1 , 1] == 2
-        total += tri[row , col]
-        total += tri[row + 1 , col + 1]
-        row += 1
-        col = col + 1
-    elseif opt[1 , 1] == 3
-        total += tri[row , col + 1]
-        total += tri[row + 1 , col + 1]
-        row += 1
-        col = col + 1
-    else
-        total += tri[row , col + 1]
-        total += tri[row + 1 , col + 2]
-        row += 1
-        col = col + 2
-    end
-
-    return row, col, total
+  # replace values in original Matrix with calculated max values
+  for col in (1:length(tri[row,:][tri[row,:] .> 0]))
+          tri[row, col] = new_tri[row, col]
+  end
 end
 
-total = 75
-row = 1
-col = 1
+tri[1:14, 1:14] #full pyramid of max values
 
-while row <= 13
-    row, col, total = get_largest_path(row, col, total)
-    row += 1
-end
-
-print("Problem 18 = ", total)  # 1074
+print("Problem 18 = ", tri[1, 1])  # 1074
