@@ -94,7 +94,7 @@ for (i in (1 : 1000)){
       # if the number is exactly a hundred.  just use that key/value
       x <- x + num_len_dict[[i]]
     } else if (as.numeric(substr(as.character(i), stri_length(i)-1, stri_length(i))) < 20) {
-      # for all numbers under 20 for the last two digigts, take one hundred
+      # for all numbers under 20 for the last two digits, take one hundred
       # plus just the value for the key for that two digit numbers
       x <- x + num_len_dict[[as.numeric(substr(as.character(i),1,1)) * 100]]
       x <- x + 3 # and
