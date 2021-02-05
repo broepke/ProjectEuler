@@ -19,7 +19,7 @@ median <- 501  # 3 to test, 501 for solution
 # initialize this outside the center.  The center is always 1 so it will be
 # easier to calculate the loops after adding and moving past the center.
 start <- 3
-corners <- list(1)
+corners <- c(1)
 total <- 0
 
 
@@ -37,7 +37,7 @@ for (c in (1 : (median - 1))){
   start <- start + 2
 }
 
-total <- Reduce(`+`, corners)
+total <- sum(corners)
 
 print(paste("Problem 28 = ", total))  # 669171001
 
