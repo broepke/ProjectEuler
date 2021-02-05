@@ -14,6 +14,7 @@ library(arrangements)
 a = c(0,1,2,3,4,5,6,7,8,9)
 b = permutations(a)
 c = b[1000000, ]
+d <- paste(c, collapse = "")
 
-print(paste0("Problem 24 = "))  # 2783915460
-print(c)
+print(paste("Problem 24 =", d))  # 2783915460
+
