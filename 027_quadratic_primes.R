@@ -21,64 +21,62 @@
 # expression that produces the maximum number of primes for consecutive
 # values of n, starting with n=0
 
+library(tidyr)
 
-calc_quadratic <- function(a, b){
-  not_primes = list()
-  consec = 0
-  n_value = 0
-  for (n in (1 : 100)){
-    result = n * n + (a * n) + b
-    if (result %in% prime_list){
-      consec = consec + 1
-      n_value = n
-      else
-        return (list(consec, n_value))
+prime_list <- c()
+largest_count <- 0
+largest_combo <- c()
+largest_product <- 0
+largest_n <- 0
+
+calc_quadratic <- function(a, b) {
+  not_primes <- c()
+  consec <- 0
+  n_value <- 0
+  for (n in (1:100)) {
+    result <- n * n + (a * n) + b
+    if (result %in% prime_list) {
+      consec <- consec + 1
+      n_value <- n
+    } else {
+      return (c(consec, n_value))
     }
   }
-  return (list(consec, n_value))
+  return (c(consec, n_value))
 }
 
 
-
-prime_list = []
-largest_count = 0
-largest_combo = []
-largest_product = 0
-largest_n = 0
-a = []
-b = []
-c = []
-
 # open up the list of the first 10,000 prime numbers
-prime_list = readdlm("primes.txt", Int32)
+prime_list <- scan("primes.txt", sep = "\n")
 
 # generate the lists needed to get the cartesian product
-for x in (-999 : 1000)
-push!(a, x)
-end
+a <- seq(-999, 1000)
+b <- seq(1, 1000)
 
-for y in (1 : 1000)
-push!(b, y)
-end
+# a <-seq(-3,3)
+# b <- seq(1, 3)
 
 # Get a new list of all cartesian products for all a & b
-c = collect(Iterators.product(a, b))
+c <- crossing(a, b)
+
 
 # loop through the products and call the quadratic function
-for i in c
-a = i[1]
-b = i[2]
-quad, quad_n = calc_quadratic(a, b)
-if quad > largest_count
-largest_count = quad
-largest_n = quad_n
-largest_combo = [a, b]
-
-largest_product = a * b
-end
-end
+for (i in (1:nrow(c))) {
+  a <- c[i,][[1]]
+  b <- c[i,][[2]]
+  quad_list <- calc_quadratic(a, b)
+  quad <- quad_list[1]
+  quad_n <- quad_list[2]
+  if (quad > largest_count) {
+    largest_count <- quad
+    largest_n <- quad_n
+    
+    largest_combo <- c(a, b)
+    largest_product <- a * b
+  }
+}
 
 print(largest_combo)
 print(largest_n)
 
-print("Problem 27 = ", largest_product)  # -59231
+print(paste("Problem 27 =", largest_product))  # -59231
