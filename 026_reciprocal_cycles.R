@@ -22,7 +22,7 @@
   max_d <- 1     # The 'd' that has maximum length
   
   for (d in (1 : LIMIT)){
-    quotient <- list()  # Stores the decimal quotient
+    quotient <- c()  # Stores the decimal quotient
     cur_value <- 1      # Variable used to perform division as if by hand
     len_recur <- 0      # Recurring length
     
