@@ -7,10 +7,10 @@
 
 
 
-first = 1
-second = 2
-fib = 3
-total = 2
+global first = 1
+global second = 2
+global fib = 3
+global total = 2
 
 @time while fib < 4000000
     fib = first + second

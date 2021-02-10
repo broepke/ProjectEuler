@@ -35,7 +35,7 @@ holder = []
 
 for i in (1:10000)
     c = amicable_numbers(i)
-    if c != nothing
+    if c !== nothing
         append!(holder, c)
     end
 end
