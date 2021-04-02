@@ -4,5 +4,7 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"python.pythonPath": "/Users/brianroepke/miniforge3/envs/ProjectEuler/bin/python"
+	}
 }
