@@ -25,7 +25,6 @@ using DelimitedFiles
 
 function calc_quadratic(a, b)
 
-    not_primes = []
     consec = 0
     n_value = 0
     for n in (1 : 100)

@@ -30,7 +30,6 @@ start_time = time.time()
 
 def calc_quadratic(a, b):
 
-    not_primes = []
     consec = 0
     n_value = 0
     for n in range(100):
