@@ -62,7 +62,7 @@ range_max = upper_bounds(limit, consec)
 longest = 0
 
 # 2 dimensional loop through all the possible combinations
-for j in (1 : range_max)
+@time for j in (1 : range_max)
     for i in (j : consec + 1)
         x = sum(primes[j:i])
         length = i - j
