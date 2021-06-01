@@ -7,10 +7,9 @@ start_time = time.time()
 # we get 3, 5, 6 and 9. The sum of these multiples is 23.
 # Find the sum of all the multiples of 3 or 5 below 1000.
 
-my_sum = 0
-for i in range(1, 1000):
-    if i % 3 == 0 or i % 5 == 0:
-        my_sum += i
+my_sum = 0        
+my_sum = sum(i for i in range(1, 1000) if i % 3 == 0 or i % 5 == 0)
+
 
 print('Question 1 =', my_sum)  # 233168
 

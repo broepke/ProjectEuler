@@ -9,17 +9,13 @@ start_time = time.time()
 # By considering the terms in the Fibonacci sequence whose values do not
 # exceed four million, find the sum of the even-valued terms.
 
-first = 1
-second = 2
-fib = 3
-total = 2
+def fibonacci(max_n):
+    n, prev = 1, 1
+    while n <= max_n:
+        yield n
+        n, prev = n + prev, n
 
-while fib < 4000000:
-    fib = first + second
-    if fib % 2 == 0:
-        total += fib
-    first = second
-    second = fib
+total = sum(n for n in fibonacci(4000000) if n % 2 == 0)
 
 print('Question 2 =', total)  # 4613732
 
