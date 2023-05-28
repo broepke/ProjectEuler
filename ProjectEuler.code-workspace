@@ -5,6 +5,10 @@
 		}
 	],
 	"settings": {
-		"python.pythonPath": "/Users/brianroepke/miniforge3/envs/ProjectEuler/bin/python"
+		"python.pythonPath": "/Users/brianroepke/miniforge3/envs/ProjectEuler/bin/python",
+		"[python]": {
+			"editor.defaultFormatter": "ms-python.autopep8"
+		},
+		"python.formatting.provider": "none"
 	}
 }

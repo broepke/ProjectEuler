@@ -1,4 +1,5 @@
 import time
+from fractions import Fraction
 
 start_time = time.time()
 
@@ -15,11 +16,35 @@ start_time = time.time()
 # If the product of these four fractions is given in its lowest common
 # terms, find the value of the denominator.
 
+# Initialize the product as 1 (since 1 is the multiplicative identity)
+product = Fraction(1, 1)
 
-print(30/50 == 3/5)
-print(49/98 == 4/8)
-print(39/98 == 3/8)
+# Loop over all two-digit numbers
+for denominator in range(10, 100):
+    for numerator in range(10, denominator):
+        # Avoid 'trivial' examples
+        if numerator%10 == 0 and denominator%10 == 0:
+            continue
+
+        # Calculate the 'true' quotient
+        true_quotient = Fraction(numerator, denominator)
+
+        # Calculate the 'incorrect' quotients and check if they're equal to the 'true' one
+        for digit in str(numerator):
+            if digit in str(denominator):
+                incorrect_numerator = int(str(numerator).replace(digit, "", 1))
+                incorrect_denominator = int(str(denominator).replace(digit, "", 1))
+                if incorrect_denominator != 0:  # Avoid dividing by zero
+                    incorrect_quotient = Fraction(incorrect_numerator, incorrect_denominator)
+                    if true_quotient == incorrect_quotient:
+                        product *= true_quotient
+
+# Print the denominator of the product
+print(product.denominator)
 
 
-print('Problem 33 =')
-print("Program took %s seconds to run." % (time.time() - start_time))
+print('Problem 33 =', product.denominator)
+print(f"Program took {(time.time() - start_time)} seconds to run.")
+
+
+
